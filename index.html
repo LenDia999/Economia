@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economia Doméstica e Finanças Pessoais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        section {
+            margin-bottom: 2rem;
+            display: none; /* Esconde todas as seções por padrão */
+        }
+
+        section.active {
+            display: block; /* Mostra apenas a seção ativa */
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 1rem;
+        }
+
+        input {
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        button {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .grafico {
+            display: flex;
+            justify-content: space-around;
+            height: 200px;
+            align-items: flex-end;
+        }
+
+        .barra {
+            width: 50px;
+            background-color: #4CAF50;
+            text-align: center;
+            color: white;
+            padding: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        dl {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1rem;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+            margin-top: 2rem;
+        }
+        Img {
+            text-align: center;
+        height: 500px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Economia Doméstica e Finanças Pessoais</h1>
+        <nav>
+            <a onclick="showSection('apresentacao')">Página Inicial</a>
+            <a onclick="showSection('simulador')">Simulador de Orçamento</a>
+            <a onclick="showSection('dicas')">Dicas de Consumo Consciente</a>
+            <a onclick="showSection('infograficos')">Infográficos</a>
+            <a onclick="showSection('glossario')">Glossário</a>
+        </nav>
+    </header>
+    <main>
+        <section id="apresentacao" class="active">
+            <h2>Apresentação do Tema</h2>
+            <p>Bem-vindo ao nosso site sobre Economia Doméstica e Finanças Pessoais! Aqui, exploramos como gerenciar dinheiro de forma inteligente, integrando conhecimentos de Matemática (cálculos e gráficos), Geografia (consumo urbano e desigualdades regionais), Sociologia (cultura do consumo e impacto social) e Português (textos explicativos e glossário).</p>
+            <p><strong>Objetivos:</strong> Estimular o pensamento crítico sobre finanças, promover organização financeira e criatividade digital. Navegue pelas seções para aprender e simular cenários reais.</p>
+        </section>
+
+        <section id="simulador">
+            <h2>Simulador de Orçamento Mensal</h2>
+            <p>Use este formulário para calcular seu orçamento mensal. Insira sua receita e despesas (Matemática: cálculos de soma/subtração e porcentagens).</p>
+            <form id="orcamento-form">
+                <label for="receita">Receita Mensal (R$):</label>
+                <input type="number" id="receita" required>
+                
+                <label for="aluguel">Despesa com Aluguel (R$):</label>
+                <input type="number" id="aluguel" required>
+                
+                <label for="comida">Despesa com Comida (R$):</label>
+                <input type="number" id="comida" required>
+                
+                <label for="transporte">Despesa com Transporte (R$):</label>
+                <input type="number" id="transporte" required>
+                
+                <label for="outros">Outras Despesas (R$):</label>
+                <input type="number" id="outros" required>
+                
+                <button type="button" onclick="calcularOrcamento()">Calcular</button>
+            </form>
+            <div id="resultado"></div>
+        </section>
+
+        <section id="dicas">
+            <h2>Dicas de Consumo Consciente</h2>
+            <p>Práticas para um consumo responsável (Sociologia: cultura do consumo e impacto social nas comunidades).</p>
+            <ul>
+                <li><strong>Planeje compras:</strong> Faça listas para evitar impulsos e reduzir desperdícios.</li>
+                <li><strong>Prefira produtos locais:</strong> Apoie economias regionais e diminua emissões de carbono (Geografia: espaço urbano).</li>
+                <li><strong>Reduza o uso de plástico:</strong> Opte por reutilizáveis para combater desigualdades ambientais globais.</li>
+                <li><strong>Eduque-se sobre preços:</strong> Compare valores e entenda inflação (Matemática: porcentagens).</li>
+                <li><strong>Invista em durabilidade:</strong> Compre itens de qualidade para economizar a longo prazo.</li>
+            </ul>
+        </section>
+
+        <section id="infograficos">
+            <h2>Infográficos com Dados Econômicos</h2>
+            <p>Representações visuais de dados fictícios (Matemática: gráficos simples; Geografia: desigualdade regional).</p>
+            
+            
+            <img src="./Img.webp">
+            
+            <h3>Consumo Urbano vs. Rural (Porcentagem)</h3>
+            <img src="./Img.jpg">
+        </section>
+
+        <section id="glossario">
+            <h2>Glossário de Termos Financeiros</h2>
+            <p>Definições claras para entender finanças (Português: produção textual explicativa).</p>
+            <dl>
+                <dt>Orçamento</dt>
+                <dd>Plano financeiro que organiza receitas e despesas.</dd>
+                
+                <dt>Receita</dt>
+                <dd>Dinheiro que entra, como salário ou rendimentos.</dd>
+                
+                <dt>Despesa</dt>
+                <dd>Dinheiro que sai, como contas ou compras.</dd>
+                
+                <dt>Inflação</dt>
+                <dd>Aumento geral de preços ao longo do tempo.</dd>
+                
+                <dt>Poupança</dt>
+                <dd>Dinheiro guardado para emergências ou metas futuras.</dd>
+                
+                <dt>Dívida</dt>
+                <dd>Valor emprestado que deve ser pago com juros.</dd>
+                
+                <dt>Investimento</dt>
+                <dd>Aplicação de dinheiro para gerar lucros.</dd>
+                
+                <dt>Porcentagem</dt>
+                <dd>Fração de 100, usada para calcular proporções.</dd>
+                
+                <dt>Consumo Consciente</dt>
+                <dd>Prática de comprar de forma responsável e sustentável.</dd>
+                
+                <dt>Desigualdade Econômica</dt>
+                <dd>Diferença de renda entre regiões ou grupos sociais.</dd>
+            </dl>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 - Atividade Interdisciplinar. Desenvolvido com HTML, CSS e JS puro.</p>
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            // Esconde todas as seções
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Mostra a seção selecionada
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function calcularOrcamento() {
+            const receita = parseFloat(document.getElementById('receita').value) || 0;
+            const aluguel = parseFloat(document.getElementById('aluguel').value) || 0;
+            const comida = parseFloat(document.getElementById('comida').value) || 0;
+            const transporte = parseFloat(document.getElementById('transporte').value) || 0;
+            const outros = parseFloat(document.getElementById('outros').value) || 0;
+            
+            const totalDespesas = aluguel + comida + transporte + outros;
+            const saldo = receita - totalDespesas;
+            
+            const porcentagemDespesas = receita > 0 ? ((totalDespesas / receita) * 100).toFixed(2) : 0;
+            
+            document.getElementById('resultado').innerHTML = `
+                <p>Total de Despesas: R$ ${totalDespesas.toFixed(2)}</p>
+                <p>Saldo: R$ ${saldo.toFixed(2)}</p>
+                <p>Porcentagem de Despesas sobre Receita: ${porcentagemDespesas}%</p>
+            `;
+        }
+
+        // Inicializa mostrando a página inicial
+        showSection('apresentacao');
+    </script>
+</body>
+</html>
